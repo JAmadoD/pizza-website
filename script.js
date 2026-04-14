@@ -8,8 +8,19 @@ const orderTotalEl = document.getElementById("order-total");
 const copyBtn = document.getElementById("copy-order");
 const checkoutBtn = document.getElementById("generate-checkout");
 const checkoutOutput = document.getElementById("checkout-output");
+const cartToggle = document.getElementById("cart-toggle");
+const cartDrawer = document.getElementById("cart-drawer");
+const cartClose = document.getElementById("cart-close");
+const cartList = document.getElementById("cart-list");
+const cartEmpty = document.getElementById("cart-empty");
+const cartSubtotalEl = document.getElementById("cart-subtotal");
+const cartTaxEl = document.getElementById("cart-tax");
+const cartTotalEl = document.getElementById("cart-total");
+const cartCountEl = document.getElementById("cart-count");
+const cartToCheckoutBtn = document.getElementById("cart-to-checkout");
 
 let order = [];
+let cart = [];
 
 function formatPrice(value) {
   return `$${value.toFixed(2)}`;
@@ -91,12 +102,135 @@ function renderMenu(categoryKey) {
 
 function addToOrder(item) {
   order.push(item);
+  addToCart(item);
   renderOrder();
 }
 
 function removeFromOrder(index) {
-  order.splice(index, 1);
+  const removed = order.splice(index, 1)[0];
+  if (removed) {
+    // remove one matching cart entry if present
+    const cartIndex = cart.findIndex((c) => c.id === removed.id && c.price === removed.price);
+    if (cartIndex !== -1) {
+      if (cart[cartIndex].qty > 1) {
+        cart[cartIndex].qty -= 1;
+      } else {
+        cart.splice(cartIndex, 1);
+      }
+    }
+    renderCart();
+  }
   renderOrder();
+}
+
+function addToCart(item) {
+  const existing = cart.find((c) => c.id === item.id && c.price === item.price);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ ...item, qty: 1 });
+  }
+  renderCart();
+}
+
+function updateCartQty(index, delta) {
+  const entry = cart[index];
+  if (!entry) return;
+  entry.qty += delta;
+  if (entry.qty <= 0) {
+    cart.splice(index, 1);
+  }
+  renderCart();
+}
+
+function removeCartItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function renderCart() {
+  cartList.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartEmpty.style.display = "block";
+    cartSubtotalEl.textContent = "$0.00";
+    cartTaxEl.textContent = "$0.00";
+    cartTotalEl.textContent = "$0.00";
+    cartCountEl.textContent = "0";
+    return;
+  }
+
+  cartEmpty.style.display = "none";
+
+  let subtotal = 0;
+  let count = 0;
+
+  cart.forEach((entry, index) => {
+    subtotal += entry.price * entry.qty;
+    count += entry.qty;
+
+    const li = document.createElement("li");
+    li.className = "cart-item";
+
+    const main = document.createElement("div");
+    main.className = "cart-item-main";
+
+    const name = document.createElement("span");
+    name.className = "cart-item-name";
+    name.textContent = entry.name;
+
+    const meta = document.createElement("span");
+    meta.className = "cart-item-meta";
+    meta.textContent = entry.category;
+
+    main.appendChild(name);
+    main.appendChild(meta);
+
+    const right = document.createElement("div");
+    right.className = "cart-item-controls";
+
+    const minus = document.createElement("button");
+    minus.className = "qty-btn";
+    minus.textContent = "-";
+    minus.addEventListener("click", () => updateCartQty(index, -1));
+
+    const qty = document.createElement("span");
+    qty.className = "cart-item-qty";
+    qty.textContent = entry.qty;
+
+    const plus = document.createElement("button");
+    plus.className = "qty-btn";
+    plus.textContent = "+";
+    plus.addEventListener("click", () => updateCartQty(index, +1));
+
+    const price = document.createElement("span");
+    price.className = "cart-item-price";
+    price.textContent = formatPrice(entry.price * entry.qty);
+
+    const remove = document.createElement("button");
+    remove.className = "cart-remove";
+    remove.textContent = "Remove";
+    remove.addEventListener("click", () => removeCartItem(index));
+
+    right.appendChild(minus);
+    right.appendChild(qty);
+    right.appendChild(plus);
+    right.appendChild(price);
+    right.appendChild(remove);
+
+    li.appendChild(main);
+    li.appendChild(right);
+
+    cartList.appendChild(li);
+  });
+
+  const tax = subtotal * 0.0625;
+  const total = subtotal + tax;
+
+  cartSubtotalEl.textContent = formatPrice(subtotal);
+  cartTaxEl.textContent = formatPrice(tax);
+  cartTotalEl.textContent = formatPrice(total);
+  cartCountEl.textContent = String(count);
 }
 
 function renderOrder() {
@@ -198,14 +332,26 @@ function copyOrderSummary() {
 }
 
 function generateCheckoutSummary() {
-  if (order.length === 0) {
-    checkoutOutput.textContent = "Add menu items first, then generate your order summary.";
+  if (cart.length === 0) {
+    checkoutOutput.textContent = "Add items to your cart first, then generate your order summary.";
     return;
   }
 
   const text = buildOrderText(true);
   checkoutOutput.textContent = text;
   copyText(text);
+}
+
+function openCart() {
+  if (!cartDrawer) return;
+  cartDrawer.classList.add("open");
+  cartDrawer.setAttribute("aria-hidden", "false");
+}
+
+function closeCart() {
+  if (!cartDrawer) return;
+  cartDrawer.classList.remove("open");
+  cartDrawer.setAttribute("aria-hidden", "true");
 }
 
 // Tab wiring
@@ -221,5 +367,29 @@ tabs.forEach((tab) => {
 copyBtn.addEventListener("click", copyOrderSummary);
 checkoutBtn.addEventListener("click", generateCheckoutSummary);
 
+cartToggle.addEventListener("click", () => {
+  if (cartDrawer.classList.contains("open")) {
+    closeCart();
+  } else {
+    openCart();
+  }
+});
+
+cartClose.addEventListener("click", closeCart);
+cartToCheckoutBtn.addEventListener("click", () => {
+  closeCart();
+  const section = document.getElementById("checkout");
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+cartDrawer.addEventListener("click", (event) => {
+  if (event.target === cartDrawer) {
+    closeCart();
+  }
+});
+
 // Initial render
 renderMenu("pizza");
+renderCart();

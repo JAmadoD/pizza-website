@@ -21,6 +21,11 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="cart-chip" id="cart-toggle" type="button">
+      <span class="cart-icon">🛒</span>
+      <span class="cart-label">Cart</span>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
     <a class="cta-call" href="tel:15086751182">Call to order</a>
   </header>
 
@@ -204,7 +209,36 @@
 
   <footer class="site-footer">
     <p>Royal Pizza — Fall River, MA. This site is for local use and may not be officially affiliated.</p>
+    <p style="margin-top:0.35rem;font-size:0.75rem;color:#6b7280;">Demo cart only. Orders are finalized by phone.</p>
   </footer>
+
+  <div class="cart-drawer" id="cart-drawer" aria-hidden="true">
+    <div class="cart-drawer-panel">
+      <header class="cart-drawer-header">
+        <h2>Your order</h2>
+        <button class="cart-close" id="cart-close" type="button">Close</button>
+      </header>
+      <div class="cart-drawer-body">
+        <ul id="cart-list" class="cart-list"></ul>
+        <p id="cart-empty" class="cart-empty">No items yet. Add pizzas, subs, or sides from the menu.</p>
+        <div class="cart-summary-row">
+          <div>
+            <span class="label">Subtotal</span>
+            <span id="cart-subtotal">$0.00</span>
+          </div>
+          <div>
+            <span class="label">Est. tax</span>
+            <span id="cart-tax">$0.00</span>
+          </div>
+          <div class="cart-total">
+            <span class="label">Total (approx.)</span>
+            <span id="cart-total">$0.00</span>
+          </div>
+        </div>
+        <button class="btn primary full" id="cart-to-checkout" type="button">Go to checkout</button>
+      </div>
+    </div>
+  </div>
 
   <script src="menuData.js"></script>
   <script src="script.js"></script>
