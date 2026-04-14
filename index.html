@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Royal Pizza • Fall River</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">RP</span>
+      <div class="brand-text">
+        <h1>Royal Pizza</h1>
+        <p>Fall River, MA</p>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="#menu">Menu</a>
+      <a href="#specials">Specials</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="cta-call" href="tel:15086751182">Call to order</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Greek‑style pizza, done right.</h2>
+        <p>Local favorite for pizza, calzones, subs, pasta, salads, and more. Fresh, generous, and made to order.</p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn primary">Browse full menu</a>
+          <a href="#checkout" class="btn secondary">Start order</a>
+        </div>
+        <div class="hero-badges">
+          <span>Greek-style pizza</span>
+          <span>Local favorite</span>
+          <span>Fast call-in ordering</span>
+        </div>
+        <p class="hero-note">Dine‑in • Takeout • Call ahead to order</p>
+      </div>
+      <div class="hero-card">
+        <h3>Today’s popular picks</h3>
+        <ul>
+          <li><strong>Royal Extra Special Pizza</strong><span>Loaded with toppings</span></li>
+          <li><strong>Portuguese Steak Pizza</strong><span>House specialty</span></li>
+          <li><strong>Chicken Mozambique Calzone</strong><span>Customer favorite</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="menu" class="menu">
+      <header class="section-header">
+        <h2>Menu</h2>
+        <p>Tap a category to explore. Use the quick order pad to build your call‑in order.</p>
+      </header>
+
+      <div class="menu-layout">
+        <div class="menu-categories">
+          <button class="menu-tab active" data-category="pizza">Pizza</button>
+          <button class="menu-tab" data-category="calzones">Calzones</button>
+          <button class="menu-tab" data-category="grinders">Grinders & Subs</button>
+          <button class="menu-tab" data-category="pasta">Pasta</button>
+          <button class="menu-tab" data-category="fried">Fried & Sides</button>
+          <button class="menu-tab" data-category="salads">Salads & Wraps</button>
+          <button class="menu-tab" data-category="gyros">Gyros</button>
+          <button class="menu-tab" data-category="desserts">Desserts</button>
+        </div>
+
+        <div class="menu-items" id="menu-items">
+          <!-- Populated by script.js using menuData.js -->
+        </div>
+
+        <aside class="order-pad">
+          <h3>Quick order pad</h3>
+          <p>Select items to build a simple order summary you can read out when you call.</p>
+          <ul id="order-list" class="order-list"></ul>
+          <p id="order-empty" class="order-empty">No items added yet.</p>
+          <div class="order-total-row">
+            <span>Total (approx.)</span>
+            <span id="order-total">$0.00</span>
+          </div>
+          <button class="btn primary full" id="copy-order">Copy order summary</button>
+          <p class="order-hint">When you’re ready, call <a href="tel:15086751182">(508) 675‑1182</a> and read your order.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="featured-strip">
+      <div class="featured-item">
+        <span class="featured-label">Best seller</span>
+        <strong>Royal Extra Special</strong>
+        <p>Big flavor, generous toppings, classic local favorite.</p>
+      </div>
+      <div class="featured-item">
+        <span class="featured-label">House style</span>
+        <strong>Portuguese Steak</strong>
+        <p>One of the most distinctive pizzas on the menu.</p>
+      </div>
+      <div class="featured-item">
+        <span class="featured-label">Family move</span>
+        <strong>Mix pizza, fries, and baklava</strong>
+        <p>Easy crowd-pleaser for a local night in.</p>
+      </div>
+    </section>
+
+    <section id="specials" class="specials">
+      <h2>House specialties</h2>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Portuguese Steak Pizza</h3>
+          <p>Local favorite topped with tender steak and classic Portuguese flavors.</p>
+        </article>
+        <article class="card">
+          <h3>Royal Extra Special</h3>
+          <p>A loaded specialty pizza with a generous mix of meats and veggies.</p>
+        </article>
+        <article class="card">
+          <h3>Chicken Mozambique</h3>
+          <p>Available as pizza or calzone, with a rich, savory Mozambique sauce.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="about-content">
+        <h2>About Royal Pizza</h2>
+        <p>Royal Pizza is a long‑time local favorite in Fall River, known for Greek‑style pizza, generous portions, and friendly service. From classic cheese to Portuguese‑inspired specialties, subs, pasta, salads, and fried favorites, there is something for everyone.</p>
+        <p>We aim to serve high‑quality food with consistent, welcoming service. Many guests have been coming here for years with their families and friends.</p>
+      </div>
+    </section>
+
+    <section id="checkout" class="checkout">
+      <h2>Simple checkout</h2>
+      <p class="checkout-copy">This is a local demo flow. It does not place a live order online. It helps you prepare your pickup details before calling.</p>
+      <div class="checkout-grid">
+        <form id="checkout-form" class="checkout-form">
+          <label>
+            Name
+            <input type="text" id="customer-name" placeholder="Your name" />
+          </label>
+          <label>
+            Phone
+            <input type="tel" id="customer-phone" placeholder="(555) 555-5555" />
+          </label>
+          <label>
+            Pickup time
+            <input type="text" id="pickup-time" placeholder="ASAP or a time" />
+          </label>
+          <label>
+            Notes
+            <textarea id="order-notes" rows="4" placeholder="Extra napkins, no onions, etc."></textarea>
+          </label>
+          <button type="button" class="btn primary full" id="generate-checkout">Generate order summary</button>
+        </form>
+        <div class="checkout-summary">
+          <h3>Your order summary</h3>
+          <pre id="checkout-output">Add menu items first, then fill this out to generate a ready-to-read summary.</pre>
+          <a href="tel:15086751182" class="btn secondary full">Call to place order</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact & hours</h2>
+      <div class="contact-grid">
+        <div>
+          <h3>Call to order</h3>
+          <p><a href="tel:15086751182" class="phone-link">(508) 675‑1182</a></p>
+          <p>Call ahead for takeout. Ask about today’s specials.</p>
+        </div>
+        <div>
+          <h3>Visit</h3>
+          <p>Fall River, MA</p>
+          <p><a href="https://www.google.com/maps/search/?api=1&query=Royal+Pizza+Fall+River" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <div>
+          <h3>Notes</h3>
+          <p>This is a local‑run site for browsing the menu and planning your order. Prices and items may change; check when you call.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Royal Pizza — Fall River, MA. This site is for local use and may not be officially affiliated.</p>
+  </footer>
+
+  <script src="menuData.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

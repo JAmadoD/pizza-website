@@ -1,0 +1,9 @@
+{
+  "name": "pizza-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Modern local-only pizza restaurant website",
+  "scripts": {
+    "dev": "npx serve . -l 8080"
+  }
+}
