@@ -29,9 +29,11 @@
     <a class="cta-call" href="tel:15086751182">Call to order</a>
   </header>
 
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+
   <main>
     <section class="hero">
-      <div class="hero-text">
+      <div class="hero-text reveal" data-reveal data-reveal-delay="40">
         <p class="eyebrow">Fall River favorite</p>
         <h2>Hot pizza, bold flavor, zero boring.</h2>
         <p>Loaded specialty pies, comfort-food classics, crispy sides, and fast call-in ordering built for hungry people who already know what good pizza should feel like.</p>
@@ -46,10 +48,10 @@
         </div>
         <p class="hero-note">Call ahead, pick it up hot, and get on with your night.</p>
       </div>
-      <div class="hero-visual">
-        <div class="hero-image-stack">
+      <div class="hero-visual reveal" data-reveal data-reveal-delay="140">
+        <div class="hero-image-stack" data-parallax="hero">
           <img src="assets/images/hero-pizza.jpg" alt="Pepperoni pizza on a wooden table" />
-          <div class="floating-rating">
+          <div class="floating-rating" data-parallax="hero-card">
             <span class="rating-stars">★★★★★</span>
             <strong>Local favorite energy</strong>
             <p>Big flavor, fast ordering, easy pickup.</p>
@@ -59,13 +61,13 @@
     </section>
 
     <section id="menu" class="menu">
-      <header class="section-header">
+      <header class="section-header reveal" data-reveal>
         <h2>Craveable menu</h2>
         <p>Move fast, browse by category, and build a pickup order without the usual friction.</p>
       </header>
 
       <div class="menu-layout">
-        <div class="menu-categories">
+        <div class="menu-categories reveal" data-reveal data-reveal-delay="40">
           <button class="menu-tab active" data-category="pizza">Pizza</button>
           <button class="menu-tab" data-category="calzones">Calzones</button>
           <button class="menu-tab" data-category="grinders">Grinders & Subs</button>
@@ -76,11 +78,11 @@
           <button class="menu-tab" data-category="desserts">Desserts</button>
         </div>
 
-        <div class="menu-items" id="menu-items">
+        <div class="menu-items reveal" id="menu-items" data-reveal data-reveal-delay="120">
           <!-- Populated by script.js using menuData.js -->
         </div>
 
-        <aside class="order-pad">
+        <aside class="order-pad reveal" data-reveal data-reveal-delay="200">
           <h3>Quick order pad</h3>
           <p>Select items to build a simple order summary you can read out when you call.</p>
           <ul id="order-list" class="order-list"></ul>
@@ -96,7 +98,7 @@
     </section>
 
     <section class="featured-strip">
-      <div class="featured-item featured-photo-card">
+      <div class="featured-item featured-photo-card reveal" data-reveal>
         <img src="assets/images/featured-pizza.jpg" alt="Fresh pizza being served" />
         <div class="featured-copy">
           <span class="featured-label">Most wanted</span>
@@ -104,12 +106,12 @@
           <p>Messy in the right way. Big toppings, real appetite appeal.</p>
         </div>
       </div>
-      <div class="featured-item">
+      <div class="featured-item reveal" data-reveal data-reveal-delay="80">
         <span class="featured-label">House style</span>
         <strong>Portuguese Steak</strong>
         <p>A strong local signature with more personality than the average chain pie.</p>
       </div>
-      <div class="featured-item">
+      <div class="featured-item reveal" data-reveal data-reveal-delay="160">
         <span class="featured-label">Game-night move</span>
         <strong>Pizza, wings, loaded fries</strong>
         <p>The kind of order that actually feels worth making.</p>
@@ -117,30 +119,30 @@
     </section>
 
     <section class="promo-band">
-      <div class="promo-copy">
+      <div class="promo-copy reveal" data-reveal>
         <p class="eyebrow">Built for cravings</p>
         <h2>Less clicking, more eating.</h2>
         <p>Get straight to the menu, stack your order fast, and call with everything ready. The whole experience is built to feel fast, hungry, and human.</p>
       </div>
-      <div class="promo-stats">
-        <div><strong>8</strong><span>menu sections</span></div>
-        <div><strong>Fast</strong><span>pickup flow</span></div>
-        <div><strong>Local</strong><span>shop energy</span></div>
+      <div class="promo-stats reveal" data-reveal data-reveal-delay="120">
+        <div class="reveal" data-reveal data-reveal-delay="150"><strong>8</strong><span>menu sections</span></div>
+        <div class="reveal" data-reveal data-reveal-delay="220"><strong>Fast</strong><span>pickup flow</span></div>
+        <div class="reveal" data-reveal data-reveal-delay="290"><strong>Local</strong><span>shop energy</span></div>
       </div>
     </section>
 
     <section id="specials" class="specials">
-      <h2>Start with the hitters</h2>
+      <h2 class="reveal" data-reveal>Start with the hitters</h2>
       <div class="card-grid">
-        <article class="card">
+        <article class="card reveal" data-reveal data-reveal-delay="40">
           <h3>Portuguese Steak Pizza</h3>
           <p>Local favorite topped with tender steak and classic Portuguese flavors.</p>
         </article>
-        <article class="card">
+        <article class="card reveal" data-reveal data-reveal-delay="120">
           <h3>Royal Extra Special</h3>
           <p>A loaded specialty pizza with a generous mix of meats and veggies.</p>
         </article>
-        <article class="card">
+        <article class="card reveal" data-reveal data-reveal-delay="200">
           <h3>Chicken Mozambique</h3>
           <p>Available as pizza or calzone, with a rich, savory Mozambique sauce.</p>
         </article>
@@ -148,7 +150,7 @@
     </section>
 
     <section id="about" class="about">
-      <div class="about-content">
+      <div class="about-content reveal" data-reveal>
         <h2>About Royal Pizza</h2>
         <p>Royal Pizza is a long‑time local favorite in Fall River, known for Greek‑style pizza, generous portions, and friendly service. From classic cheese to Portuguese‑inspired specialties, subs, pasta, salads, and fried favorites, there is something for everyone.</p>
         <p>We aim to serve high‑quality food with consistent, welcoming service. Many guests have been coming here for years with their families and friends.</p>
@@ -156,10 +158,10 @@
     </section>
 
     <section id="checkout" class="checkout">
-      <h2>Build your pickup order</h2>
-      <p class="checkout-copy">This is a polished local ordering flow. It does not place a live online order, but it gives you a clean summary so calling in is fast and painless.</p>
+      <h2 class="reveal" data-reveal>Build your pickup order</h2>
+      <p class="checkout-copy reveal" data-reveal data-reveal-delay="40">This is a polished local ordering flow. It does not place a live online order, but it gives you a clean summary so calling in is fast and painless.</p>
       <div class="checkout-grid">
-        <form id="checkout-form" class="checkout-form">
+        <form id="checkout-form" class="checkout-form reveal" data-reveal data-reveal-delay="80">
           <label>
             Name
             <input type="text" id="customer-name" placeholder="Your name" />
@@ -178,7 +180,7 @@
           </label>
           <button type="button" class="btn primary full" id="generate-checkout">Generate order summary</button>
         </form>
-        <div class="checkout-summary">
+        <div class="checkout-summary reveal" data-reveal data-reveal-delay="160">
           <h3>Your order summary</h3>
           <pre id="checkout-output">Add menu items first, then fill this out to generate a ready-to-read summary.</pre>
           <a href="tel:15086751182" class="btn secondary full">Call to place order</a>
@@ -187,19 +189,19 @@
     </section>
 
     <section id="contact" class="contact">
-      <h2>Contact & hours</h2>
+      <h2 class="reveal" data-reveal>Contact & hours</h2>
       <div class="contact-grid">
-        <div>
+        <div class="reveal" data-reveal data-reveal-delay="40">
           <h3>Call to order</h3>
           <p><a href="tel:15086751182" class="phone-link">(508) 675‑1182</a></p>
           <p>Call ahead for takeout. Ask about today’s specials.</p>
         </div>
-        <div>
+        <div class="reveal" data-reveal data-reveal-delay="120">
           <h3>Visit</h3>
           <p>Fall River, MA</p>
           <p><a href="https://www.google.com/maps/search/?api=1&query=Royal+Pizza+Fall+River" target="_blank" rel="noopener">Open in Google Maps</a></p>
         </div>
-        <div>
+        <div class="reveal" data-reveal data-reveal-delay="200">
           <h3>Notes</h3>
           <p>This is a local‑run site for browsing the menu and planning your order. Prices and items may change; check when you call.</p>
         </div>
@@ -209,7 +211,7 @@
 
   <footer class="site-footer">
     <p>Royal Pizza — Fall River, MA. This site is for local use and may not be officially affiliated.</p>
-    <p style="margin-top:0.35rem;font-size:0.75rem;color:#6b7280;">Demo cart only. Orders are finalized by phone.</p>
+    <p class="demo-note">Demo mode: Cart and checkout are for demo purposes. Orders are finalized by phone.</p>
   </footer>
 
   <div class="cart-drawer" id="cart-drawer" aria-hidden="true">
